@@ -68,7 +68,7 @@ def main():
     driver = webdriver.Chrome(service=service, options=chrome_options)
 
     # URL to scrape
-    url = "https://www.twitch.tv/colonal/about"
+    url = str(config['TWITCH_SETTINGS']['Streamer'])
 
     try:
         driver.get(url)
