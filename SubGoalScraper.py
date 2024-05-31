@@ -59,7 +59,7 @@ def update_redux():
 
 
 def main():
-    file_name = "sub_goal_output.txt"
+    file_name = str(config['SCRAPER_SETTINGS']['file_name'])
     update_redux()  # Call our updater
     # Set up the Chrome options
     chrome_options = Options()
@@ -74,15 +74,14 @@ def main():
         driver.get(url)
         time.sleep(5)
         # Find the element using the specified XPath
-        element = driver.find_element(By.XPATH,
-                                      "/html/body/div[1]/div/div[1]/div/main/div[1]/div[3]/div/div/div[1]/div[1]/div[2]/div/section/div[3]/div/div/div/div[1]/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div/div[2]/div[2]/p")
+        element = driver.find_element(By.XPATH, str(config['SCRAPER_SETTINGS']['xpath']))
 
         # Get the text content of the element
         text_content = element.text.split("/")[0]
 
 
 
-        with open(file_name, "w") as file:
+        with open(str(config['SCRAPER_SETTINGS']['output_dir']) + file_name, "w") as file:
             file.write(text_content)
         logging.info(f"Text content saved to {file_name} ")
     except Exception as e:
