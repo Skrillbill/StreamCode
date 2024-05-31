@@ -78,7 +78,9 @@ def main():
                                       "/html/body/div[1]/div/div[1]/div/main/div[1]/div[3]/div/div/div[1]/div[1]/div[2]/div/section/div[3]/div/div/div/div[1]/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div/div[2]/div[2]/p")
 
         # Get the text content of the element
-        text_content = element.text
+        text_content = element.text.split("/")[0]
+
+
 
         with open(file_name, "w") as file:
             file.write(text_content)
